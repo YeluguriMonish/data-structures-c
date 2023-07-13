@@ -1,12 +1,7 @@
 #include <stdio.h>
-#define MAX_SIZE 100
+#include "stack.h"
 
-struct stack {
-  void *items[MAX_SIZE];
-  int top;
-};
-
-void init(struct stack *st) { st->top = -1; }
+void init_stack(struct stack *st) { st->top = -1; }
 
 int isFull(struct stack *st) { return st->top == MAX_SIZE - 1; }
 
@@ -25,19 +20,17 @@ void *pop(struct stack *st) {
   if (isEmpty(st)) {
     printf("stack is empty");
     return NULL;
-  } else {
-    void *value = st->items[st->top];
-    st->top--;
-    return value;
   }
+  void *value = st->items[st->top];
+  st->top--;
+  return value;
 }
 
-int main() {
-  struct stack example;
-  init(&example);
-  int i = 5;
-  int *value = &i;
-  push(&example, value);
-  push(&example, value);
-  return 0;
+void *top(struct stack *st) {
+  if (isEmpty(st)){
+    printf("stack is empty");
+    return NULL;
+  }
+  void *value = st->items[st->top];
+  return value;
 }
