@@ -1,17 +1,17 @@
-#define MAX_SIZE 100
+#define MAX_STACK_SIZE 100
 
 struct stack {
-  void *items[MAX_SIZE];
+  void *items[MAX_STACK_SIZE];
   int top;
 };
 
-void init(struct stack *st);
+void initStack(struct stack *st);
 
-int isFull(struct stack *st);
+int stackIsFull(struct stack *st);
 
-int isEmpty(struct stack *st);
+int stackIsEmpty(struct stack *st);
 
-void push(struct stack *st, void *ptr);
+void push(struct stack *st, void *item);
 
 void *pop(struct stack *st);
 

@@ -1,15 +1,22 @@
-#include "stack/stack.h"
+#include "queue/queue.h"
 #include <stdio.h>
 
 int main() {
-  struct stack st;
-  init(&st);
-  int i = 5;
-  int *ptr = &i;
-  push(&st, ptr);
-  void *pt;
-  pt = pop(&st);
-  int *test = (int *)pt;
-  printf("%d", *test);
+  struct queue q;
+  int value = 5, *i = &value;
+  initQueue(&q);
+  enqueue(&q, i);
+
+  int four = 4, *j = &four;
+  enqueue(&q, j);
+
+  void *f = front(&q);
+
+  printf("front: %d\n", *(int *)f);
+
+  dequeue(&q);
+  f = front(&q);
+  printf("front: %d\n", *(int *)f);
+
   return 0;
 }

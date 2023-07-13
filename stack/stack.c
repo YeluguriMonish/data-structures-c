@@ -1,23 +1,23 @@
-#include <stdio.h>
 #include "stack.h"
+#include <stdio.h>
 
-void init_stack(struct stack *st) { st->top = -1; }
+void initStack(struct stack *st) { st->top = -1; }
 
-int isFull(struct stack *st) { return st->top == MAX_SIZE - 1; }
+int stackIsFull(struct stack *st) { return st->top == MAX_STACK_SIZE - 1; }
 
-int isEmpty(struct stack *st) { return st->top == -1; }
+int stackIsEmpty(struct stack *st) { return st->top == -1; }
 
-void push(struct stack *st, void *ptr) {
-  if (isFull(st)) {
+void push(struct stack *st, void *item) {
+  if (stackIsFull(st)) {
     printf("stack is full");
   } else {
     st->top++;
-    st->items[st->top] = ptr;
+    st->items[st->top] = item;
   }
 }
 
 void *pop(struct stack *st) {
-  if (isEmpty(st)) {
+  if (stackIsEmpty(st)) {
     printf("stack is empty");
     return NULL;
   }
@@ -27,7 +27,7 @@ void *pop(struct stack *st) {
 }
 
 void *top(struct stack *st) {
-  if (isEmpty(st)){
+  if (stackIsEmpty(st)) {
     printf("stack is empty");
     return NULL;
   }
